@@ -1,0 +1,48 @@
+.builder-container {
+    padding-top: 100px;
+    min-height: calc(100% - 100px);
+    width: 100%;
+    background-color: #CCD0D8;
+}
+
+.builder-items {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 100px;
+    gap: 80px;
+}
+
+.builder-items-left {
+    display:flex;
+    flex-direction: column;
+    height: 1000px;
+    width: 1000px;
+    gap: 40px;
+}
+
+.builder-filter {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: yellow;
+    width: 1000px;
+    height: 100px;
+    gap: 100px
+}
+
+.builder-cards {
+    background-color: purple;
+    flex-grow: 1; /* This will make the builder-cards section take up all available space in the left container */
+    max-height: 80%; /* Adjust this value as per your requirement to limit the maximum height of the builder-cards section */
+    overflow-y: auto;
+}
+
+.builder-items-right {
+    display:flex;
+    flex-direction: column;
+    background-color: black;
+    height: 840px;
+    width: 400px;
+}
