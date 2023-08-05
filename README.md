@@ -1,70 +1,19 @@
-# Getting Started with Create React App
+# Marvel Snap Game Deck Building Website 🕹️
+![image](https://github.com/aaronle03/DeckBuildPlus/assets/91503688/568fc4c0-2541-440e-91b3-e7f79fa6bbd6)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Marvel Snap Game Deck Building Website repository! This project aims to provide a user-friendly web application for building and managing decks for the popular Marvel Snap Game. Whether you are a beginner or an experienced player, this website will assist you in creating powerful decks to outsmart your opponents in the snap battles!
 
-## Available Scripts
+## Introduction
+Marvel Snap Game is an exciting card game that features your favorite Marvel heroes and villains in epic battles. The game revolves around creating decks of cards that represent characters, abilities, and equipment. With this website, we aim to streamline the deck building process, making it simple, intuitive, and accessible to all players.
 
-In the project directory, you can run:
+## Getting Started
+To get started with the Marvel Snap Game Deck Building Website, follow these steps:
 
-### `npm start`
+Clone the repository to your local machine using git clone https://github.com/your-username/marvel-snap-deck-builder.git
+Navigate to the project directory: ```cd marvel-snap-deck-builder```
+Install the necessary dependencies: npm install
+Configure the backend server URL in src/config.js to connect to the API server.
+Usage
+Once you have set up the project, you can start the development server using npm start. This will launch the web application, and you can access it by visiting http://localhost:3000 in your web browser.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Follow the on-screen instructions to create an account or log in if you already have one. From there, you can begin building and managing your Marvel Snap Game decks. Explore the card database, add cards to your deck, remove them, and save your progress.
