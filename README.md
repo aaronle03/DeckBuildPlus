@@ -9,11 +9,13 @@ Marvel Snap Game is an exciting card game that features your favorite Marvel her
 ## Getting Started
 To get started with the Marvel Snap Game Deck Building Website, follow these steps:
 
-Clone the repository to your local machine using git clone https://github.com/your-username/marvel-snap-deck-builder.git
-Navigate to the project directory: ```cd marvel-snap-deck-builder```
-Install the necessary dependencies: npm install
-Configure the backend server URL in src/config.js to connect to the API server.
-Usage
+- Clone the repository to your local machine using git clone https://github.com/your-username/marvel-snap-deck-builder.git
+- Navigate to the project directory: ```cd marvel-snap-deck-builder```
+- Install the necessary dependencies: npm install
+- Configure the backend server URL in src/config.js to connect to the API server.
+
+
+## Usage
 Once you have set up the project, you can start the development server using npm start. This will launch the web application, and you can access it by visiting http://localhost:3000 in your web browser.
 
 Follow the on-screen instructions to create an account or log in if you already have one. From there, you can begin building and managing your Marvel Snap Game decks. Explore the card database, add cards to your deck, remove them, and save your progress.
