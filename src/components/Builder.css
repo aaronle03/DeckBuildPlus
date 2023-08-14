@@ -66,6 +66,10 @@
     overflow-y: auto;
 }
 
+.builder-cards img {
+    height: 300px;
+}
+
 .builder-items-right {
     display:flex;
     flex-direction: column;

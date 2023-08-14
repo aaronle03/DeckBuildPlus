@@ -4,6 +4,7 @@ import './Builder.css';
 
 const Builder = () => {
     const [cards, setCards] = useState([]);
+    const [powerFilter, setPowerFilter] = useState(false);
 
     useEffect(() => {
     const fetchCards = async () => {
@@ -21,23 +22,36 @@ const Builder = () => {
     const [selectedPowers, setSelectedPowers] = useState([]);
 
     const handleCostButtonClick = (value) => {
-      setSelectedCosts(prevSelectedCosts => {
-        if (prevSelectedCosts.includes(value)) {
-          return prevSelectedCosts.filter(val => val !== value);
-        } else {
-          return [...prevSelectedCosts, value];
-        }
-      });
+        setSelectedCosts((prevSelectedCosts) => {
+          if (prevSelectedCosts.includes(value)) {
+            return prevSelectedCosts.filter((val) => val !== value);
+          } else {
+            return [...prevSelectedCosts, value];
+          }
+        });
+        setPowerFilter(false); // Reset power filter when cost filter changes
     };
 
     const handlePowerButtonClick = (value) => {
-      setSelectedPowers(prevSelectedPowers => {
-        if (prevSelectedPowers.includes(value)) {
-          return prevSelectedPowers.filter(val => val !== value);
-        } else {
-          return [...prevSelectedPowers, value];
-        }
-      });
+        setSelectedPowers((prevSelectedPowers) => {
+          if (prevSelectedPowers.includes(value)) {
+            return prevSelectedPowers.filter((val) => val !== value);
+          } else {
+            return [...prevSelectedPowers, value];
+          }
+        });
+        setPowerFilter(value === '1'); // Step 2: Activate power filter when value is '1'
+    };
+
+    const [selectedKeyword, setSelectedKeyword] = useState('option1'); // State for selected keyword
+    const [selectedSortBy, setSelectedSortBy] = useState('option1'); // State for selected sort option
+
+    const handleKeywordChange = (event) => {
+      setSelectedKeyword(event.target.value);
+    };
+
+    const handleSortByChange = (event) => {
+      setSelectedSortBy(event.target.value);
     };
 
     return (
@@ -114,31 +128,47 @@ const Builder = () => {
                         </div>
                         <div className="filter-card-keyword">
                             <h2>Card Keyword</h2>
-                            <select>
-                                <option value="option1">All</option>
-                                <option value="option2">Destroy</option>
-                                <option value="option3">Discard</option>
-                                <option value="option4">Move</option>
-                                <option value="option5">Ongoing</option>
-                                <option value="option6">On Reveal</option>
+                            <select value={selectedKeyword} onChange={handleKeywordChange}>
+                              <option value="option1">All</option>
+                              <option value="option2">Destroy</option>
+                              <option value="option3">Discard</option>
+                              <option value="option4">Move</option>
+                              <option value="option5">Ongoing</option>
+                              <option value="option6">On Reveal</option>
                             </select>
                         </div>
                         <div className="filter-card-sortby">
                             <h2>Sort By</h2>
-                            <select>
-                                <option value="option1">Alphabetical</option>
-                                <option value="option2">Card Cost</option>
-                                <option value="option3">Card Power</option>
+                            <select value={selectedSortBy} onChange={handleSortByChange}>
+                              <option value="option1">Alphabetical</option>
+                              <option value="option2">Card Cost</option>
+                              <option value="option3">Card Power</option>
                             </select>
                         </div>
                     </div>
                     <div class="builder-cards">
                         <ul>
-                            {cards.map(card => (
-                                <img
-                                src={require(`../imgs/${card.cardid}.webp`).default}
-                                alt={card.name}
-                              />
+                            {cards
+                                .filter((card) => (
+                                    selectedPowers.length === 0 || selectedPowers.includes(card.power.toString())
+                                ))
+                                .filter((card) => (
+                                    selectedCosts.length === 0 || selectedCosts.includes(card.cost.toString())
+                                ))
+                                .filter((card) => (
+                                    selectedKeyword === 'option1' || card.keyword === selectedKeyword
+                                ))
+                                .sort((a, b) => {
+                                    if (selectedSortBy === 'option1') return a.name.localeCompare(b.name);
+                                    if (selectedSortBy === 'option2') return a.cost - b.cost;
+                                    if (selectedSortBy === 'option3') return a.power - b.power;
+                                })
+                                .map((card) => (
+                                  <img
+                                    src={`https://snapjson.untapped.gg/art/render/framebreak/common/512/${card.carddefid}.webp`}
+                                    alt={card.name}
+                                    key={card.cardid}
+                                  />
                             ))}
                         </ul>
                     </div>
