@@ -130,11 +130,12 @@ const Builder = () => {
                             <h2>Card Keyword</h2>
                             <select value={selectedKeyword} onChange={handleKeywordChange}>
                               <option value="option1">All</option>
-                              <option value="option2">Destroy</option>
-                              <option value="option3">Discard</option>
-                              <option value="option4">Move</option>
-                              <option value="option5">Ongoing</option>
-                              <option value="option6">On Reveal</option>
+                              <option value="option2">Card Draw</option>
+                              <option value="option3">Destroy</option>
+                              <option value="option4">Discard</option>
+                              <option value="option5">Move</option>
+                              <option value="option6">Ongoing</option>
+                              <option value="option7">On Reveal</option>
                             </select>
                         </div>
                         <div className="filter-card-sortby">
@@ -155,9 +156,28 @@ const Builder = () => {
                                 .filter((card) => (
                                     selectedCosts.length === 0 || selectedCosts.includes(card.cost.toString())
                                 ))
-                                .filter((card) => (
-                                    selectedKeyword === 'option1' || card.keyword === selectedKeyword
-                                ))
+                                .filter((card) => {
+                                    console.log(card.abilities);
+                                
+                                    if (selectedKeyword === 'option1') {
+                                        return true
+                                    } else if (selectedKeyword === 'option2') {
+                                        return card.abilities.includes('Card Draw') || card.abilities.includes('Card Draw');
+                                    } else if (selectedKeyword === 'option3') {
+                                        return card.abilities.includes('Destroy') || card.abilities.includes('Destroy');
+                                    } else if (selectedKeyword === 'option4') {
+                                        return card.abilities.includes('Discard') || card.abilities.includes('Discard');
+                                    } else if (selectedKeyword === 'option5') {
+                                        return card.abilities.includes('Move') || card.abilities.includes('Move');
+                                    } else if (selectedKeyword === 'option6') {
+                                        return card.abilities.includes('Ongoing') || card.abilities.includes('Ongoing');
+                                    } else if (selectedKeyword === 'option7') {
+                                        return card.abilities.includes('On Reveal') || card.abilities.includes('On Reveal');
+                                    }
+                                
+                                    
+                                    return false;
+                                })
                                 .sort((a, b) => {
                                     if (selectedSortBy === 'option1') return a.name.localeCompare(b.name);
                                     if (selectedSortBy === 'option2') return a.cost - b.cost;

@@ -29,7 +29,8 @@ def cards_api():
             'cost': card['cost'],
             'power': card['power'],
             'category': card['category'],
-            'carddefid': card['carddefid']
+            'carddefid': card['carddefid'],
+            'abilities': card['abilities']
         }
         cardList.append(card_info)
     return jsonify(cardList)
