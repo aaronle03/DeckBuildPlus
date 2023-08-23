@@ -54,6 +54,21 @@ const Builder = () => {
       setSelectedSortBy(event.target.value);
     };
 
+
+
+    const PERSONAL_DECK_LIMIT = 12;
+    const [personalDeck, setPersonalDeck] = useState([]);
+
+    const addToPersonalDeck = (cardName) => {
+        if (personalDeck.length < PERSONAL_DECK_LIMIT &&!personalDeck.includes(cardName)) {
+            setPersonalDeck((prevDeck) => [...prevDeck, cardName]);
+        }
+    };
+
+    const clearPersonalDeck = () => {
+        setPersonalDeck([]);
+    };
+
     return (
         <div class="builder-container">
             <div class="builder-items">
@@ -188,6 +203,7 @@ const Builder = () => {
                                     src={`https://snapjson.untapped.gg/art/render/framebreak/common/512/${card.carddefid}.webp`}
                                     alt={card.name}
                                     key={card.cardid}
+                                    onClick={() => addToPersonalDeck(card.name)}
                                   />
                             ))}
                         </ul>
@@ -196,10 +212,15 @@ const Builder = () => {
                 <div class="builder-items-right">
                     <div class="builder-items-right-buttons">
                         <button>Save</button>
-                        <button>Clear</button>
+                        <button onClick={clearPersonalDeck}>Clear</button>
                     </div>
                     <div class="builder-items-personal-deck">
-
+                        <h2>Personal Deck</h2>
+                        <ul>
+                            {personalDeck.map((cardName, index) => (
+                                <li key={index}>{cardName}</li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </div>

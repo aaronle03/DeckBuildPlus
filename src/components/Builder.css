@@ -68,6 +68,17 @@
 
 .builder-cards img {
     height: 300px;
+    margin: 0px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.builder-cards img:hover {
+    transform: scale(1.1);
+}
+
+.card-container {
+    height: 350px;
+    width: 350px;
 }
 
 .builder-items-right {
