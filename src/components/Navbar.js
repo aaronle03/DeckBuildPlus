@@ -12,8 +12,8 @@ const Navbar = () => {
           </section>
           <section className='navbar-links'>
                 <a href="https://www.google.com/">BUILDER ⚙️</a>
+                <a href="https://www.google.com/">MY DECKS 🔥</a>
                 <a href="https://www.google.com/">CARD INDEX 📖</a>
-                <a href="https://www.google.com/">POPULAR DECKS 🔥</a>
           </section>
           <section>
           </section>

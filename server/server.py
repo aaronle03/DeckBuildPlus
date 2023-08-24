@@ -1,6 +1,6 @@
 import pymongo
 from pymongo import MongoClient
-from flask import Flask, jsonify
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -34,6 +34,20 @@ def cards_api():
         }
         cardList.append(card_info)
     return jsonify(cardList)
+
+@app.route('/api/savePersonalDeck', methods=['POST'])
+def save_personal_deck():
+    deck_data = request.json  # Assuming the payload contains a "deck" field with the deck data
+    if 'deck' in deck_data and len(deck_data['deck']) == 12:
+        dbname = get_database()
+        collection = dbname["personalDecks"]  # Create a collection for personal decks
+        try:
+            result = collection.insert_one({'cards': deck_data['deck']})
+            return jsonify({'message': 'Personal deck saved successfully!'})
+        except Exception as e:
+            return jsonify({'error': 'Failed to save personal deck.', 'details': str(e)})
+    else:
+        return jsonify({'error': 'Invalid personal deck data or length.'})
 
 if __name__ == '__main__':
     app.run(debug=True)

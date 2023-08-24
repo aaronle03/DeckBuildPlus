@@ -6,6 +6,7 @@ const Builder = () => {
     const [cards, setCards] = useState([]);
     const [powerFilter, setPowerFilter] = useState(false);
 
+    // ----------------------- GET INFO FROM MONGODB -----------------------
     useEffect(() => {
     const fetchCards = async () => {
       try {
@@ -18,6 +19,7 @@ const Builder = () => {
     fetchCards();
   }, []);
 
+    // ----------------------- SORTING/FILTER SECTION -----------------------
     const [selectedCosts, setSelectedCosts] = useState([]);
     const [selectedPowers, setSelectedPowers] = useState([]);
 
@@ -55,7 +57,7 @@ const Builder = () => {
     };
 
 
-
+    // ----------------------- SAVE AND CLEAR DECK -----------------------
     const PERSONAL_DECK_LIMIT = 12;
     const [personalDeck, setPersonalDeck] = useState([]);
 
@@ -67,6 +69,19 @@ const Builder = () => {
 
     const clearPersonalDeck = () => {
         setPersonalDeck([]);
+    };
+
+    const savePersonalDeck = async () => {
+        if (personalDeck.length === PERSONAL_DECK_LIMIT) {
+            try {
+                const response = await axios.post('http://localhost:5000/api/savePersonalDeck', {
+                    deck: personalDeck
+                });
+                console.log('Personal deck saved:', response.data);
+            } catch (error) {
+                console.error('Error saving personal deck:', error);
+            }
+        }
     };
 
     return (
@@ -162,7 +177,7 @@ const Builder = () => {
                             </select>
                         </div>
                     </div>
-                    <div class="builder-cards">
+                    <div class="builder-cards custom-scrollbar">
                         <ul>
                             {cards
                                 .filter((card) => (
@@ -211,15 +226,26 @@ const Builder = () => {
                 </div>
                 <div class="builder-items-right">
                     <div class="builder-items-right-buttons">
-                        <button>Save</button>
+                        <button onClick={savePersonalDeck}>Save</button>
                         <button onClick={clearPersonalDeck}>Clear</button>
                     </div>
                     <div class="builder-items-personal-deck">
                         <h2>Personal Deck</h2>
                         <ul>
-                            {personalDeck.map((cardName, index) => (
-                                <li key={index}>{cardName}</li>
-                            ))}
+                            {personalDeck.map((cardName, index) => {
+                                const card = cards.find(card => card.name === cardName); // Find the card in the cards array
+                                if (card) {
+                                    return (
+                                        <li key={index}>
+                                            <span><b>{card.name} - </b></span> 
+                                            <span>COST = {card.cost}  | </span>
+                                            <span>POWER =  {card.power}</span>
+                                        </li>
+                                    );
+                                } else {
+                                    return null; // Handle if the card is not found (optional)
+                                }
+                            })}
                         </ul>
                     </div>
                 </div>
