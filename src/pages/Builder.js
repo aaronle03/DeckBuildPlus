@@ -17,7 +17,7 @@ const Builder = () => {
       }
     };
     fetchCards();
-  }, []);
+    }, []);
 
     // ----------------------- SORTING/FILTER SECTION -----------------------
     const [selectedCosts, setSelectedCosts] = useState([]);
