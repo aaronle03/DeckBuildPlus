@@ -19,3 +19,6 @@ To get started with the Marvel Snap Game Deck Building Website, follow these ste
 Once you have set up the project, you can start the development server using npm start. This will launch the web application, and you can access it by visiting http://localhost:3000 in your web browser.
 
 Follow the on-screen instructions to create an account or log in if you already have one. From there, you can begin building and managing your Marvel Snap Game decks. Explore the card database, add cards to your deck, remove them, and save your progress.
+
+
+![Updated_8-24-2023](https://github.com/aaronle03/DeckBuildPlus/assets/91503688/d6b9b260-f73d-4b9b-beca-991eee5ee9c2)
